@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         List<GetUser> userList = userService.getUserList();
 
-        List<String> usernameList = userList.stream().map(user -> user.getUsername())
+        List<String> usernameList = userList.stream().map(user -> user.getName())
                 .collect(Collectors.toList());
 
         System.out.println("--- 정렬 전 ---");
