@@ -9,6 +9,10 @@ import java.util.stream.Collectors;
 public class Main {
     private static final UserService userService = new UserService();
     public static void main(String[] args) {
+        getUsernameList();
+    }
+
+    private static void getUsernameList() {
         List<GetUser> userList = userService.getUserList();
 
         List<String> usernameList = userList.stream().map(user -> user.getName())

@@ -7,13 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserService {
+//    private static final Gson gson = new GsonBuilder()
+//            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+//            .create();
     private static final Gson gson = new Gson();
     private static final RestApiService restApiService = new RestApiService();
-    private static final String usersUrl = "https://jsonplaceholder.typicode.com/users";
+    private static final String JSONPLACEHOLDER_USER = "https://jsonplaceholder.typicode.com/users";
     public List<GetUser> getUserList() {
         List<GetUser> getUserList = new ArrayList<>();
         try {
-            String userResponse = restApiService.getJsonResponse(usersUrl);
+            String userResponse = restApiService.getJsonResponse(JSONPLACEHOLDER_USER);
 
             JsonArray userJsonArray = gson.fromJson(userResponse, JsonArray.class);
 
@@ -21,8 +24,6 @@ public class UserService {
                 GetUser user = gson.fromJson(e, GetUser.class);
                 getUserList.add(user);
             }
-            return getUserList;
-
         } catch (Exception e) {
             e.printStackTrace();
         }
